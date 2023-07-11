@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Registration</title>
+    </head>
+    <style>
+         body{
+            display: grid;
+            background-image:url("HH.jpg");
+            background-blend-mode:darken;
+            background-size: cover;
+            background-repeat:no-repeat;
+            background-attachment:fixed;
+            justify-content: center;
+            margin: auto;
+            background-color: rgba(237, 194, 52, 0.861);
+            
+        }
+        .c1 {
+            display: grid;
+            background-color: aqua;
+            justify-content: center;
+            width: 300px;
+            height: 370px;
+            margin-left: 2cm;
+            margin-top: 2cm;
+            background-color:rgba(58, 41, 2, 0.016);
+            background: transparent;
+            border: 2px solid rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            border-radius: 20px;
+               
+            box-shadow: 15px 10px 10px 7px rgb(53, 45, 2);
+        }
+        input{
+            font-size: 16px;
+            background-color: #ecf0f1;
+            border: 1px solid #bdc3c7;
+            border-radius: 10px;
+            padding: 3px;
+            margin-left:0.60cm;
+        }
+        button{  background-color: #ecf0f1;
+            border: 1px solid #bdc3c7;
+            border-radius: 5px;
+            padding: 7px;
+            margin-left: 3cm;
+
+        }
+        #l{ margin-left: 1cm;
+        color:whitesmoke;}
+
+
+
+
+</style>
+    
+    <body>
+       
+        <div class="c1">
+        <form  action="" method="post" >
+            <div class="center">
+            <h1  id='l'style="color:white" ;>Registration</h1>
+            <input type="text"   name="name" placeholder ="Enter Name"><br/> <br>
+            <input type="text"   name="id" placeholder="Email ID"><br/> <br>
+            
+            <input type="text"   name="contact" placeholder="Contact Number"><br/><br>
+            <input type="password"   name="password" placeholder="Enter Password"> <br/><br>
+           
+            <button type="submit"  name="submit" value="Register" >Submit</button>
+            <br>
+            Click here to <a href="login.php" title="Login"> Login 
+            
+            </div>
+        </form>
+        </div>
+        
+        
+        
+        <?php
+        // put your code here
+        $Name = $id = $Contact = $Password = "" ;
+        
+        if($_SERVER["REQUEST_METHOD"]=="POST"){
+            $Name = $_POST['name'];
+            $Id = $_POST['id'];
+            $Contact = $_POST['contact'];
+            $Password = $_POST['password'];
+            
+            $con = mysqli_connect("localhost","root","","library_system");                     
+       
+			$query = "INSERT INTO `user` (id, name, contact, password) VALUES ('$Id', '$Name', '$Contact', '$Password')";
+                        $result = mysqli_query($con,$query);
+                        if($result){
+			 echo ("Registration Succesful");
+			            }
+                                    else
+                                    {
+                                        echo ("Fail"); 
+                                    }
+                         } 
+        
+        
+        
+        ?>
+    </body>
+</html>
